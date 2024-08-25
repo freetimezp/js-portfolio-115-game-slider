@@ -6,6 +6,11 @@
     list-style-type: none;
 }
 
+:root {
+    --all-transition: 1s ease;
+    --opacity-transition: 0.3s ease;
+}
+
 a {
     text-decoration: none;
 }
@@ -13,11 +18,26 @@ a {
 body {
     background: #3674be;
     min-height: 100vh;
+    transition: var(--all-transition);
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    left: 3.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 800px;
+    height: 800px;
+    background: rgba(255, 255, 255, .8);
+    border-radius: 50%;
+    filter: blur(200px);
 }
 
 .img-box {
     position: absolute;
-    left: -60%;
+    left: -45%;
     top: 50%;
     transform: translateY(-50%);
     width: 1300px;
@@ -31,6 +51,7 @@ body {
 
 .img-list .img-slider {
     height: inherit;
+    transition: var(--all-transition);
 }
 
 .img-slider .img-item {
@@ -39,6 +60,7 @@ body {
     top: 50%;
     transform: translateY(-50%) rotate(calc(-360deg / 6 * var(--i))) scale(.8);
     transform-origin: 650px;
+    transition: var(--all-transition);
 }
 
 .img-slider .img-item.active {
@@ -50,11 +72,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: var(--all-transition);
 }
 
 .img-item .item img {
     transform: rotate(calc(360deg / 6 * var(--i))) rotate(120deg);
     filter: blur(8px);
+    transition: var(--all-transition);
 }
 
 .img-item.active .item img {
@@ -84,6 +108,8 @@ body {
     transform: translateX(100%);
     opacity: 0;
     box-shadow: none;
+    transition: transform var(--all-transition), opacity var(--opacity-transition),
+        box-shadow var(--all-transition);
 }
 
 .info-box .info-item.active {
@@ -150,6 +176,35 @@ body {
     text-decoration: none;
     font-weight: 600;
 }
+
+
+
+.navigation {
+    position: absolute;
+    left: 23%;
+    bottom: 7%;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.navigation span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 55px;
+    color: #fff;
+}
+
+
+
+
 
 
 
